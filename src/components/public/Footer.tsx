@@ -14,8 +14,7 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold mb-3">サービス</p>
             <ul className="space-y-2 text-sm text-forge-muted">
-              <li><Link href="/for-companies" className="hover:text-forge-black transition">企業の方へ</Link></li>
-              <li><Link href="/for-engineers" className="hover:text-forge-black transition">エンジニアの方へ</Link></li>
+              <li><Link href="/for-companies" className="hover:text-forge-black transition">サービス</Link></li>
               <li><Link href="/operate" className="hover:text-forge-black transition">運用サービス</Link></li>
               <li><Link href="/inquiry" className="hover:text-forge-black transition">お問い合わせ</Link></li>
             </ul>

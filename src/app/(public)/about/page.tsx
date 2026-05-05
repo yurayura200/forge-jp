@@ -13,7 +13,7 @@ export default function AboutPage() {
           <p className="text-xs font-medium text-forge-ember">About</p>
           <h1 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight">会社情報</h1>
           <p className="mt-6 text-lg text-forge-muted leading-relaxed">
-            ForgeはAI実装エージェンシー。日本のAI実装の現場と企業を直接つなぎ、構築から運用まで一気通貫で提供します。
+            Forge は AI 実装ファーム。AI を導入したいのに対応してくれる会社が見つからない企業のために、構築から運用まで一気通貫で引き受けます。
           </p>
 
           <dl className="mt-12 divide-y divide-forge-border border-t border-b border-forge-border">
@@ -32,7 +32,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-3 gap-4 py-4 text-sm">
               <dt className="font-medium text-forge-muted">事業内容</dt>
               <dd className="col-span-2">
-                AI実装の受託開発、AI運用基盤の提供、業務委託エンジニアのマッチング
+                AI 実装の受託開発、AI 運用基盤の提供、AI 関連コンサルティング
               </dd>
             </div>
           </dl>

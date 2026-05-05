@@ -9,10 +9,7 @@ export function Header() {
         </Link>
         <nav className="hidden md:flex items-center gap-7 text-sm">
           <Link href="/for-companies" className="text-forge-muted hover:text-forge-black transition">
-            企業の方へ
-          </Link>
-          <Link href="/for-engineers" className="text-forge-muted hover:text-forge-black transition">
-            エンジニアの方へ
+            サービス
           </Link>
           <Link href="/operate" className="text-forge-muted hover:text-forge-black transition">
             運用サービス
