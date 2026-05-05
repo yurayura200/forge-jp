@@ -5,7 +5,8 @@ import { GitHubSignInButton } from "./_components/GitHubSignInButton";
 
 export const metadata = {
   title: "エンジニア登録",
-  description: "ForgeのAI実装エンジニアとして登録する。",
+  description: "Forge の AI 実装エンジニアとして登録する。",
+  robots: { index: false, follow: false },
 };
 
 export default async function EngineerApplyPage() {
