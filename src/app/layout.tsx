@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Noto_Sans_JP } from "next/font/google";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" className={`${geist.variable} ${notoJp.variable}`}>
+    <html lang="ja" className={`${inter.variable} ${notoJp.variable}`}>
       <body className="min-h-screen bg-background font-sans">{children}</body>
     </html>
   );

@@ -1,5 +1,7 @@
-import { createServerClient as createSSRServerClient } from "@supabase/ssr";
+import { createServerClient as createSSRServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+
+type CookieSet = { name: string; value: string; options?: CookieOptions };
 
 export async function createServerClient() {
   const cookieStore = await cookies();
@@ -12,7 +14,7 @@ export async function createServerClient() {
         getAll() {
           return cookieStore.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: CookieSet[]) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
