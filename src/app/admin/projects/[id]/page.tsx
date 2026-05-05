@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { createServerClient } from "@/lib/supabase/server";
+import { createServerClient, createServiceRoleClient } from "@/lib/supabase/server";
 import { formatJPY, formatDate } from "@/lib/utils";
 import { calculateMatchScore } from "@/lib/matching";
+import { ProjectStatusActions } from "./_components/ProjectStatusActions";
+import { ApplicationActions } from "./_components/ApplicationActions";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +26,14 @@ export default async function ProjectDetailPage({
 
   if (!project) notFound();
 
-  // Find candidate engineers
+  const adminSb = createServiceRoleClient();
+
+  const { data: applications } = await adminSb
+    .from("project_applications")
+    .select("*")
+    .eq("project_id", id)
+    .order("proposed_at", { ascending: false });
+
   const { data: engineers } = await supabase
     .from("engineers")
     .select(
@@ -61,6 +70,14 @@ export default async function ProjectDetailPage({
       </Link>
       <h1 className="mt-4 text-2xl font-bold tracking-tight">{project.title}</h1>
       <p className="text-sm text-forge-muted mt-1">{company?.company_name || "-"}</p>
+
+      {/* Status actions */}
+      <div className="mt-6">
+        <ProjectStatusActions
+          projectId={project.id}
+          currentStatus={project.status}
+        />
+      </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 rounded-lg border border-forge-border bg-white p-6">
@@ -117,8 +134,85 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
+      {/* Applications */}
       <div className="mt-10">
-        <h2 className="text-xl font-semibold mb-4">マッチング候補</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          応募一覧
+          <span className="ml-3 text-sm font-normal text-forge-muted">
+            {applications?.length || 0} 件
+          </span>
+        </h2>
+        {applications && applications.length > 0 ? (
+          <div className="space-y-3">
+            {applications.map((a) => (
+              <article
+                key={a.assignment_id}
+                className="rounded-lg border border-forge-border bg-white p-5"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Link
+                        href={`/admin/engineers/${a.engineer_id}`}
+                        className="text-base font-bold hover:text-forge-ember"
+                      >
+                        {a.engineer_name}
+                      </Link>
+                      <span className="text-xs text-forge-muted">
+                        @{a.github_username}
+                      </span>
+                      <span
+                        className={`rounded px-2 py-0.5 text-xs font-medium ${
+                          a.status === "accepted"
+                            ? "bg-emerald-50 text-emerald-700"
+                            : a.status === "declined"
+                              ? "bg-stone-100 text-stone-600"
+                              : "bg-orange-50 text-orange-700"
+                        }`}
+                      >
+                        {a.status}
+                      </span>
+                    </div>
+                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-forge-muted tabular-nums">
+                      <span>
+                        希望報酬：
+                        {a.proposed_payout
+                          ? formatJPY(a.proposed_payout)
+                          : "—"}
+                      </span>
+                      <span>
+                        稼働：
+                        {a.proposed_hours_per_week || "—"} 時間/週
+                      </span>
+                      <span>
+                        応募日：
+                        {new Date(a.proposed_at).toLocaleDateString("ja-JP")}
+                      </span>
+                    </div>
+                    {a.cover_letter && (
+                      <p className="mt-3 whitespace-pre-wrap text-sm text-forge-muted leading-relaxed line-clamp-4">
+                        {a.cover_letter}
+                      </p>
+                    )}
+                  </div>
+                  <ApplicationActions
+                    assignmentId={a.assignment_id}
+                    currentStatus={a.status}
+                    proposedPayout={a.proposed_payout}
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-lg border border-forge-border bg-white p-6 text-sm text-forge-muted">
+            まだ応募がありません。Status を「公開」にすると /engineers/jobs に出ます。
+          </p>
+        )}
+      </div>
+
+      <div className="mt-10">
+        <h2 className="text-xl font-semibold mb-4">マッチング候補（参考）</h2>
         <div className="rounded-lg border border-forge-border bg-white overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-forge-surface">
@@ -158,7 +252,7 @@ export default async function ProjectDetailPage({
               {ranked.length === 0 && (
                 <tr>
                   <td colSpan={5} className="px-4 py-12 text-center text-sm text-forge-muted">
-                    候補がいません。エンジニアの登録・審査状況を確認してください。
+                    候補がいません。
                   </td>
                 </tr>
               )}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
-import { ArrowLeft, Briefcase, Calendar, Coins, Clock, Mail } from "lucide-react";
+import { ArrowLeft, Briefcase, Calendar, Coins, Clock } from "lucide-react";
 import { createServerClient, createServiceRoleClient } from "@/lib/supabase/server";
 
 export const metadata = {
@@ -181,23 +181,20 @@ export default async function JobDetailPage({
           </div>
 
           <div className="mt-6 rounded-xl border-2 border-forge-ember bg-gradient-to-br from-orange-50 to-white p-6 md:p-8">
-            <p className="text-sm font-bold flex items-center gap-2">
-              <Mail className="h-4 w-4 text-forge-ember" />
-              この案件に応募する
-            </p>
+            <p className="text-sm font-bold">この案件に応募する</p>
             <p className="mt-2 text-sm text-forge-muted">
-              応募意思のあるエンジニアは下記からご連絡ください。Forge 運営が要件と
-              ご経験の合致を確認し、企業との直接面談をセッティングします。
+              応募メッセージ + 希望報酬 + 稼働時間を入力すると、Forge 運営が要件と
+              ご経験の合致を確認し、企業へ推薦します。
             </p>
-            <a
-              href={`mailto:info@komugi-ai.jp?subject=${encodeURIComponent(`【応募】${project.title}（案件 ID: ${project.id.slice(0, 8)}）`)}&body=${encodeURIComponent("お世話になっております。\n\n標題の案件に応募させていただきます。\n\n■ 自己紹介\n（簡単な経歴）\n\n■ 関連実績\n（GitHub URL / 過去案件）\n\n■ 稼働可能時間\n\n■ ご質問\n\n以上、よろしくお願いいたします。")}`}
+            <Link
+              href={`/engineers/jobs/${project.id}/apply`}
               className="mt-5 inline-flex items-center gap-2 rounded-md bg-forge-ember px-6 py-3 font-medium text-white hover:bg-forge-black transition"
             >
-              応募メールを送る
+              応募フォームへ
               <ArrowLeft className="h-4 w-4 rotate-180" />
-            </a>
+            </Link>
             <p className="mt-3 text-xs text-forge-muted">
-              ※ Premium プラン（¥3,000/月）なら、企業へ直接 DM 送信権が付きます。
+              ※ Premium プラン（¥3,000/月）は新着案件を即時通知 + 優先表示。
             </p>
           </div>
         </div>
