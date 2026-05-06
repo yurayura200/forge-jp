@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', system-ui, sans-serif">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#1A1410"/>
+    </linearGradient>
+    <linearGradient id="us-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FF8E5C"/>
+    </linearGradient>
+    <linearGradient id="jp-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3A3A3A"/>
+      <stop offset="100%" stop-color="#5A5A5A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Top brand row -->
+  <g transform="translate(60,52)">
+    <rect x="0" y="-2" width="6" height="28" fill="#FF6B35"/>
+    <text x="20" y="20" fill="#FFFFFF" font-size="22" font-weight="700" letter-spacing="0.05em">FORGE</text>
+    <text x="98" y="20" fill="#9A8C7F" font-size="16" font-weight="500">AI 実装ファーム</text>
+  </g>
+  <text x="1140" y="72" text-anchor="end" fill="#9A8C7F" font-size="14">forge.komugi-ai.jp</text>
+
+  <!-- Headline -->
+  <text x="60" y="140" fill="#FFFFFF" font-size="44" font-weight="800" letter-spacing="-0.01em">AI 導入率の日米格差</text>
+  <text x="60" y="178" fill="#FF6B35" font-size="22" font-weight="600">米国 88% に対して、日本は 42.7%</text>
+
+  <!-- Bar chart area -->
+  <g transform="translate(60, 230)">
+    <!-- Scale -->
+    <line x1="180" y1="0" x2="180" y2="180" stroke="#444" stroke-width="1"/>
+    <line x1="180" y1="180" x2="1100" y2="180" stroke="#444" stroke-width="1"/>
+
+    <!-- US bar -->
+    <text x="0" y="50" fill="#FFFFFF" font-size="24" font-weight="700">米国</text>
+    <rect x="180" y="22" width="810" height="56" fill="url(#us-bar)" rx="2"/>
+    <text x="1005" y="58" fill="#FFFFFF" font-size="32" font-weight="800">88%</text>
+
+    <!-- JP bar -->
+    <text x="0" y="138" fill="#FFFFFF" font-size="24" font-weight="700">日本</text>
+    <rect x="180" y="110" width="394" height="56" fill="url(#jp-bar)" rx="2"/>
+    <text x="588" y="146" fill="#FFFFFF" font-size="32" font-weight="800">42.7%</text>
+
+    <!-- Y-axis labels -->
+    <text x="180" y="200" fill="#666" font-size="12" text-anchor="middle">0%</text>
+    <text x="640" y="200" fill="#666" font-size="12" text-anchor="middle">50%</text>
+    <text x="1100" y="200" fill="#666" font-size="12" text-anchor="middle">100%</text>
+  </g>
+
+  <!-- Sub stats grid -->
+  <g transform="translate(60, 460)">
+    <!-- 1 -->
+    <g>
+      <text x="0" y="0" fill="#9A8C7F" font-size="13" font-weight="500">AI コア業務導入</text>
+      <text x="0" y="28" fill="#FF6B35" font-size="22" font-weight="800">米 6.1%</text>
+      <text x="100" y="28" fill="#888" font-size="22" font-weight="700">/ 日 1.9%</text>
+    </g>
+    <!-- 2 -->
+    <g transform="translate(380, 0)">
+      <text x="0" y="0" fill="#9A8C7F" font-size="13" font-weight="500">DX 成果指標を設定</text>
+      <text x="0" y="28" fill="#FF6B35" font-size="22" font-weight="800">米 89.8%</text>
+      <text x="125" y="28" fill="#888" font-size="22" font-weight="700">/ 日 27.4%</text>
+    </g>
+    <!-- 3 -->
+    <g transform="translate(780, 0)">
+      <text x="0" y="0" fill="#9A8C7F" font-size="13" font-weight="500">日本 SME 生成AI 使用率</text>
+      <text x="0" y="28" fill="#FF6B35" font-size="22" font-weight="800">23.5%</text>
+      <text x="80" y="28" fill="#888" font-size="16" font-weight="600">（OECD 調査国 最下位）</text>
+    </g>
+  </g>
+
+  <!-- Bottom message + sources -->
+  <g transform="translate(60, 555)">
+    <rect x="0" y="-2" width="4" height="22" fill="#FF6B35"/>
+    <text x="14" y="14" fill="#FFFFFF" font-size="16" font-weight="700">対応できる実装会社が圧倒的に足りていない。Forge はこの需給ギャップを埋めます。</text>
+  </g>
+
+  <text x="60" y="600" fill="#666" font-size="11">出典: McKinsey State of AI 2025 / 総務省 情報通信白書 令和7年版 / Stanford HAI AI Index 2025 / IPA DX動向2025 / OECD AI Adoption SME 2025</text>
+</svg>

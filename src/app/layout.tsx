@@ -46,10 +46,10 @@ export const metadata: Metadata = {
       "構築だけじゃない。評価・運用・進化まで。日本のAIインフラを、Forgeから。",
     images: [
       {
-        url: "/og.png",
+        url: "/og/forge-ai-gap.png",
         width: 1200,
         height: 630,
-        alt: "Forge",
+        alt: "Forge — AI 導入率の日米格差。Forge は需給ギャップを埋めます",
       },
     ],
   },
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title: "Forge — AIを、動かし続ける。",
     description:
       "構築だけじゃない。評価・運用・進化まで。日本のAIインフラを、Forgeから。",
-    images: ["/og.png"],
+    images: ["/og/forge-ai-gap.png"],
   },
   robots: {
     index: true,
