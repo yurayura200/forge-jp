@@ -365,6 +365,10 @@ export default function HomePage() {
               <p className="mt-1 text-sm text-forge-muted">PoC から本実装まで案件規模に応じて</p>
               <ul className="mt-7 space-y-4 text-sm">
                 <li className="flex justify-between border-b border-forge-border pb-3">
+                  <span>ライト（小スコープ）</span>
+                  <span className="font-bold tabular-nums">10万円〜</span>
+                </li>
+                <li className="flex justify-between border-b border-forge-border pb-3">
                   <span>PoC・小規模実装</span>
                   <span className="font-bold tabular-nums">50万円〜</span>
                 </li>
@@ -380,7 +384,7 @@ export default function HomePage() {
             </div>
             <div className="relative rounded-2xl border-2 border-forge-ember p-8 bg-gradient-to-br from-orange-50 to-white shadow-lg">
               <div className="absolute -top-3 left-8 bg-forge-ember text-white text-xs font-medium px-3 py-1 rounded-full">
-                ⭐ 推奨・全案件にセット
+                継続支援
               </div>
               <div className="flex items-center gap-2">
                 <Activity className="h-5 w-5 text-forge-ember" />
@@ -389,6 +393,10 @@ export default function HomePage() {
               <p className="mt-2 text-2xl font-bold">運用フェーズ</p>
               <p className="mt-1 text-sm text-forge-muted">月額固定で運用代行・精度監視・改善</p>
               <ul className="mt-7 space-y-4 text-sm">
+                <li className="flex justify-between border-b border-forge-border pb-3">
+                  <span>メンテのみ</span>
+                  <span className="font-bold tabular-nums">月5万円〜</span>
+                </li>
                 <li className="flex justify-between border-b border-forge-border pb-3">
                   <span>ベーシック</span>
                   <span className="font-bold tabular-nums">月30万円〜</span>
@@ -405,7 +413,7 @@ export default function HomePage() {
             </div>
           </div>
           <p className="mt-6 text-sm text-forge-muted">
-            最低契約期間: 6ヶ月。Build 単独契約は通常価格 1.5 倍。詳細はヒアリング後に見積もり。すべて成果物完成責任型の業務委託契約。
+            最低契約期間: 3ヶ月（メンテのみは1ヶ月から）。詳細はヒアリング後に見積もり。すべて成果物完成責任型の業務委託契約として Stripe 経由で決済。
           </p>
         </div>
       </section>
